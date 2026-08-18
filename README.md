@@ -1,8 +1,17 @@
 # Codeforces Rating Forecaster
 
+[![Live App](https://img.shields.io/badge/Live%20App-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://codeforces-rating-forecaster.streamlit.app)
+[![tests](https://github.com/almuzahidseyam/Codeforces-Rating-Forecaster/actions/workflows/tests.yml/badge.svg)](https://github.com/almuzahidseyam/Codeforces-Rating-Forecaster/actions/workflows/tests.yml)
+[![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A portfolio-ready Python web app that loads a Codeforces user's public rating history, visualizes the real trajectory, fits a logarithmic regression curve, and extrapolates that fitted trend across future rated contests.
 
 > **Important:** this project visualizes and extrapolates a mathematical trend. It does **not** predict official future Codeforces ratings, participation, rank, or contest performance.
+
+**Live demo:** https://codeforces-rating-forecaster.streamlit.app
+
+![Codeforces Rating Forecaster live demo](assets/demo.png)
 
 ## Highlights
 
@@ -15,7 +24,7 @@ A portfolio-ready Python web app that loads a Codeforces user's public rating hi
 - Model slope, intercept, and historical R²
 - Friendly validation for invalid handles and API/network failures
 - Unit tests plus GitHub Actions CI
-- Streamlit-based interface that is ready for cloud deployment
+- Deployed publicly with Streamlit Community Cloud
 
 ## Tech stack
 
@@ -99,6 +108,8 @@ Codeforces-Rating-Forecaster/
 │       └── tests.yml
 ├── .streamlit/
 │   └── config.toml
+├── assets/
+│   └── demo.png
 ├── src/
 │   ├── __init__.py
 │   ├── codeforces_api.py
@@ -119,11 +130,14 @@ Codeforces-Rating-Forecaster/
 
 ## Deployment
 
-The app is structured for deployment on Streamlit Community Cloud. After the repository is published, connect the GitHub repository in Streamlit Community Cloud and use `app.py` as the entry point.
+The public app is deployed from the `main` branch on Streamlit Community Cloud:
+
+**https://codeforces-rating-forecaster.streamlit.app**
+
+The deployment entry point is `app.py`, and the project uses Python 3.12.
 
 ## Roadmap
 
-- Add a public live-demo URL and screenshot to this README
 - Compare logarithmic, linear, polynomial, and recent-form models
 - Add downloadable CSV/PNG output
 - Add multi-handle comparison
@@ -132,7 +146,7 @@ The app is structured for deployment on Streamlit Community Cloud. After the rep
 ## Author
 
 **Muhammad Al-Muzahid**  
-GitHub: `@almuzahidseyam`
+GitHub: [`@almuzahidseyam`](https://github.com/almuzahidseyam)
 
 ## License
 
