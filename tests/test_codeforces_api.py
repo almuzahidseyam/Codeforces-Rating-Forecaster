@@ -62,6 +62,35 @@ def test_fetch_rating_history_preserves_schema_for_empty_result(monkeypatch) -> 
     assert tuple(history.columns) == RATING_HISTORY_COLUMNS
 
 
+def test_fetch_rating_history_sorts_rows_chronologically(monkeypatch) -> None:
+    payload = {
+        "status": "OK",
+        "result": [
+            {
+                "contestId": 2,
+                "newRating": 1100,
+                "oldRating": 1050,
+                "ratingUpdateTimeSeconds": 200,
+            },
+            {
+                "contestId": 1,
+                "newRating": 1050,
+                "oldRating": 1000,
+                "ratingUpdateTimeSeconds": 100,
+            },
+        ],
+    }
+    monkeypatch.setattr(
+        "src.codeforces_api.requests.get",
+        lambda *args, **kwargs: FakeResponse(payload),
+    )
+
+    history = fetch_rating_history("abc")
+
+    assert history["contest_id"].tolist() == [1, 2]
+    assert history["contest_number"].tolist() == [1, 2]
+
+
 def test_fetch_rating_history_reports_missing_handle(monkeypatch) -> None:
     payload = {
         "status": "FAILED",

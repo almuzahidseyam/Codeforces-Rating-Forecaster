@@ -103,6 +103,10 @@ def fetch_rating_history(handle: str) -> pd.DataFrame:
     if not isinstance(rows, list) or any(not isinstance(item, dict) for item in rows):
         raise CodeforcesAPIError("Codeforces returned an invalid rating history.")
 
+    rows = sorted(
+        rows, key=lambda item: item.get("ratingUpdateTimeSeconds") or 0
+    )
+
     normalized = []
     for contest_number, item in enumerate(rows, start=1):
         normalized.append(
